@@ -33,19 +33,20 @@ An end-to-end machine learning project that predicts whether a loan application 
 
 ---
 
-## 📂 Project Structure
+<h2>📂 Project Structure</h2>
 
-
+<pre>
 loan-approval-prediction-flask/
+├── app.py
+├── model_loan.pkl
+├── requirements.txt
+├── templates/
+│   └── index.html
+├── data/
+│   ├── loan.csv
+│   └── test_data.xlsx
+└── notebooks/
+    └── Loan_Status_Prediction.ipynb
+</pre>
 
-|--app.py
-|--model_loan.pkl
-|--requirements.txt
-|--templates/
-|  |--index.html
-|--data/
-|  |--loan.csv
-|  |--test_data.xlsx
-|--notebooks/
-   |--Loan_Status_Prediction.ipynb
 
