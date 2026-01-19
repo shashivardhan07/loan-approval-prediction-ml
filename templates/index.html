@@ -1,85 +1,197 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loan Approval Prediction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            background: linear-gradient(135deg, #eef2f3, #d9e4ec);
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
         }
+
         .container {
-            max-width: 600px;
+            max-width: 700px;
             margin: 50px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
-        h2 {
+
+        h1 {
             text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        p.subtitle {
+            text-align: center;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        label {
+            font-size: 14px;
             color: #333;
         }
-        form {
-            margin-top: 20px;
-            text-align: center;
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
         }
-        input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #3498db;
+            color: #fff;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
+            font-size: 16px;
             cursor: pointer;
-        }
-        input[type="submit"]:hover {
-            background-color: #45a049;
-        }
-        .result {
             margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 15px;
             text-align: center;
+            font-size: 18px;
             font-weight: bold;
+            border-radius: 8px;
+        }
+
+        .approved {
+            background-color: #eafaf1;
+            color: #1e8449;
+        }
+
+        .rejected {
+            background-color: #fdecea;
+            color: #922b21;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Loan Approval Prediction</h2>
-        <form action="/predict" method="post">
-            <label for="gender">Gender (1 for Male, 0 for Female):</label><br>
-            <input type="text" id="gender" name="gender" required><br>
-            <label for="married">Married (1 for Yes, 0 for No):</label><br>
-            <input type="text" id="married" name="married" required><br>
-            <label for="dependents">Dependents:</label><br>
-            <input type="text" id="dependents" name="dependents" required><br>
-            <label for="education">Education (1 for Graduate, 0 for Not Graduate):</label><br>
-            <input type="text" id="education" name="education" required><br>
-            <label for="self_employed">Self Employed (1 for Yes, 0 for No):</label><br>
-            <input type="text" id="self_employed" name="self_employed" required><br>
-            <label for="applicantincome">Applicant Income:</label><br>
-            <input type="text" id="applicantincome" name="applicantincome" required><br>
-            <label for="coapplicantincome">Coapplicant Income:</label><br>
-            <input type="text" id="coapplicantincome" name="coapplicantincome" required><br>
-            <label for="loanamount">Loan Amount:</label><br>
-            <input type="text" id="loanamount" name="loanamount" required><br>
-            <label for="loanamountterm">Loan Amount Term:</label><br>
-            <input type="text" id="loanamountterm" name="loanamountterm" required><br>
-            <label for="credithistory">Credit History (1 for Yes, 0 for No):</label><br>
-            <input type="text" id="credithistory" name="credithistory" required><br>
-            <label for="propertyarea">Property Area (0 for Rural, 1 for Semiurban, 2 for Urban):</label><br>
-            <input type="text" id="propertyarea" name="propertyarea" required><br>
-            <input type="submit" value="Predict">
-        </form>
-        <div class="result">
-            {% if prediction_text %}
-                <p>{{ prediction_text }}</p>
-            {% endif %}
+
+<div class="container">
+    <h1>Loan Approval Prediction</h1>
+    <p class="subtitle">Enter applicant details to check loan eligibility</p>
+
+    <form action="/predict" method="post">
+        <div class="form-grid">
+
+            <div>
+                <label>Gender</label>
+                <select name="gender" required>
+                    <option value="1">Male</option>
+                    <option value="0">Female</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Married</label>
+                <select name="married" required>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Dependents</label>
+                <input type="number" name="dependents" required>
+            </div>
+
+            <div>
+                <label>Education</label>
+                <select name="education" required>
+                    <option value="1">Graduate</option>
+                    <option value="0">Not Graduate</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Self Employed</label>
+                <select name="self_employed" required>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <div>
+                <label>Applicant Income</label>
+                <input type="number" name="applicantincome" required>
+            </div>
+
+            <div>
+                <label>Coapplicant Income</label>
+                <input type="number" name="coapplicantincome" required>
+            </div>
+
+            <div>
+                <label>Loan Amount</label>
+                <input type="number" name="loanamount" required>
+            </div>
+
+            <div>
+                <label>Loan Amount Term</label>
+                <input type="number" name="loanamountterm" required>
+            </div>
+
+            <div>
+                <label>Credit History</label>
+                <select name="credithistory" required>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <div class="full-width">
+                <label>Property Area</label>
+                <select name="propertyarea" required>
+                    <option value="0">Rural</option>
+                    <option value="1">Semiurban</option>
+                    <option value="2">Urban</option>
+                </select>
+            </div>
         </div>
-    </div>
+
+        <button type="submit">Predict Loan Status</button>
+    </form>
+
+    {% if prediction_text %}
+        <div class="result {{ 'approved' if 'approved' in prediction_text.lower() else 'rejected' }}">
+            {{ prediction_text }}
+        </div>
+    {% endif %}
+</div>
+
 </body>
 </html>
 
