@@ -47,4 +47,3 @@ loan-approval-prediction-flask/
 │   └── test_data.xlsx
 └── notebooks/
     └── Loan_Status_Prediction.ipynb
-
