@@ -35,6 +35,7 @@ An end-to-end machine learning project that predicts whether a loan application 
 
 ## 📂 Project Structure
 
+
 loan-approval-prediction-flask/
 ├── app.py
 ├── model_loan.pkl
