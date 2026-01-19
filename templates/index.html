@@ -1,0 +1,85 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Approval Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            margin-top: 20px;
+            text-align: center;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Loan Approval Prediction</h2>
+        <form action="/predict" method="post">
+            <label for="gender">Gender (1 for Male, 0 for Female):</label><br>
+            <input type="text" id="gender" name="gender" required><br>
+            <label for="married">Married (1 for Yes, 0 for No):</label><br>
+            <input type="text" id="married" name="married" required><br>
+            <label for="dependents">Dependents:</label><br>
+            <input type="text" id="dependents" name="dependents" required><br>
+            <label for="education">Education (1 for Graduate, 0 for Not Graduate):</label><br>
+            <input type="text" id="education" name="education" required><br>
+            <label for="self_employed">Self Employed (1 for Yes, 0 for No):</label><br>
+            <input type="text" id="self_employed" name="self_employed" required><br>
+            <label for="applicantincome">Applicant Income:</label><br>
+            <input type="text" id="applicantincome" name="applicantincome" required><br>
+            <label for="coapplicantincome">Coapplicant Income:</label><br>
+            <input type="text" id="coapplicantincome" name="coapplicantincome" required><br>
+            <label for="loanamount">Loan Amount:</label><br>
+            <input type="text" id="loanamount" name="loanamount" required><br>
+            <label for="loanamountterm">Loan Amount Term:</label><br>
+            <input type="text" id="loanamountterm" name="loanamountterm" required><br>
+            <label for="credithistory">Credit History (1 for Yes, 0 for No):</label><br>
+            <input type="text" id="credithistory" name="credithistory" required><br>
+            <label for="propertyarea">Property Area (0 for Rural, 1 for Semiurban, 2 for Urban):</label><br>
+            <input type="text" id="propertyarea" name="propertyarea" required><br>
+            <input type="submit" value="Predict">
+        </form>
+        <div class="result">
+            {% if prediction_text %}
+                <p>{{ prediction_text }}</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+
