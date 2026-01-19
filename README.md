@@ -38,18 +38,14 @@ An end-to-end machine learning project that predicts whether a loan application 
 
 loan-approval-prediction-flask/
 
-├── app.py
-|
-├── model_loan.pkl
-|
-├── requirements.txt
-|
-├── templates/
-│   └── index.html
-|
-├── data/
-│   ├── loan.csv
-│   └── test_data.xlsx
-|
-└── notebooks/
-    └── Loan_Status_Prediction.ipynb
+|--app.py
+|--model_loan.pkl
+|--requirements.txt
+|--templates/
+|  |--index.html
+|--data/
+|  |--loan.csv
+|  |--test_data.xlsx
+|--notebooks/
+   |--Loan_Status_Prediction.ipynb
+
