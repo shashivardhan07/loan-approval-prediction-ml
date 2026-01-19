@@ -40,9 +40,10 @@ loan-approval-prediction-flask/
 ├── model_loan.pkl
 ├── requirements.txt
 ├── templates/
-│ └── index.html
+│   └── index.html
 ├── data/
-│ ├── loan.csv
-│ └── test_data.xlsx
+│   ├── loan.csv
+│   └── test_data.xlsx
 └── notebooks/
-└── Loan_Status_Prediction.ipynb
+    └── Loan_Status_Prediction.ipynb
+
